@@ -1,6 +1,6 @@
 [
     {
-        "model": "levelupapi.Game",
+        "model": "levelupapi.Event",
         "pk": 1,
         "fields": {
             "game": 1,
@@ -11,7 +11,7 @@
         }
     },
     {
-        "model": "levelupapi.Game",
+        "model": "levelupapi.Event",
         "pk": 2,
         "fields": {
             "game": 2,
