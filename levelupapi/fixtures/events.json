@@ -1,0 +1,24 @@
+[
+    {
+        "model": "levelupapi.Game",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "event_time": "2021-05-15T03:30:00",
+            "location": "My house",
+            "name": "risking it for the biskin it",
+            "host": 1
+        }
+    },
+    {
+        "model": "levelupapi.Game",
+        "pk": 2,
+        "fields": {
+            "game": 2,
+            "event_time": "2021-05-16T03:30:00",
+            "location": "your moms house",
+            "name": "intro to WoW",
+            "host": 1
+        }
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "model": "levelupapi.Game",
+        "pk": 1,
+        "fields": {
+            "name": "Risk",
+            "game_type": 1,
+            "max_players": 5,
+            "min_players": 2,
+            "difficulty": "moderate"
+        }
+    },
+    {
+        "model": "levelupapi.Game",
+        "pk": 2,
+        "fields": {
+            "name": "World of Warcraft",
+            "game_type": 2,
+            "max_players": 64,
+            "min_players": 1,
+            "difficulty": "hard"
+        }
+    }
+]
