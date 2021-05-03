@@ -6,5 +6,6 @@
             "name": "LevelUp",
             "database": "db.sqlite3"
         }
-    ]
+    ],
+    "python.pythonPath": "/Users/nickcarver/.local/share/virtualenvs/levelup-sozy-4xu/bin/python"
 }
