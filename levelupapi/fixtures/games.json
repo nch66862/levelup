@@ -1,7 +1,7 @@
 [
     {
         "model": "levelupapi.game",
-        "pk": 1,
+        "pk": 4,
         "fields": {
             "title": "Welcome To",
             "maker": "Benoit Turpin",
@@ -13,7 +13,7 @@
     },
     {
         "model": "levelupapi.game",
-        "pk": 2,
+        "pk": 5,
         "fields": {
             "title": "Settlers of Catan",
             "maker": "Klaus Teuber",
@@ -25,7 +25,7 @@
     },
     {
         "model": "levelupapi.game",
-        "pk": 3,
+        "pk": 6,
         "fields": {
             "title": "Dungeons & Dragons",
             "maker": "Wizards of the Coast",
