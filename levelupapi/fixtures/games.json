@@ -1,24 +1,38 @@
 [
     {
-        "model": "levelupapi.Game",
+        "model": "levelupapi.game",
         "pk": 1,
         "fields": {
-            "name": "Risk",
-            "game_type": 1,
-            "max_players": 5,
-            "min_players": 2,
-            "difficulty": "moderate"
+            "title": "Welcome To",
+            "maker": "Benoit Turpin",
+            "gamer": 1,
+            "gametype": 1,
+            "number_of_players": 4,
+            "skill_level": 3
         }
     },
     {
-        "model": "levelupapi.Game",
+        "model": "levelupapi.game",
         "pk": 2,
         "fields": {
-            "name": "World of Warcraft",
-            "game_type": 2,
-            "max_players": 64,
-            "min_players": 1,
-            "difficulty": "hard"
+            "title": "Settlers of Catan",
+            "maker": "Klaus Teuber",
+            "gamer": 1,
+            "gametype": 1,
+            "number_of_players": 4,
+            "skill_level": 4
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 3,
+        "fields": {
+            "title": "Dungeons & Dragons",
+            "maker": "Wizards of the Coast",
+            "gamer": 1,
+            "gametype": 2,
+            "number_of_players": 5,
+            "skill_level": 3
         }
     }
 ]
