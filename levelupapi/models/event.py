@@ -7,3 +7,4 @@ class Event(models.Model):
     location = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     host = models.ForeignKey("Gamer", on_delete=models.CASCADE)
+    attendees = models.ManyToManyField("Gamer", through="EventAttendee", related_name="attending")
