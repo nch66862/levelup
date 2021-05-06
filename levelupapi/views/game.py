@@ -92,8 +92,10 @@ class Games(ViewSet):
 
         gametype = GameType.objects.get(pk=request.data["gameTypeId"])
         game.gametype = gametype
-        game.save()
-
+        try:
+            game.save()
+        except ValidationError as ex:
+            return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
         # 204 status code means everything worked but the
         # server is not sending back any data in the response
         return Response({}, status=status.HTTP_204_NO_CONTENT)
