@@ -8,6 +8,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from levelupapi.models import Game, Event, Gamer, EventAttendee
 from levelupapi.views.game import GameSerializer
+import json
 
 
 class Events(ViewSet):
@@ -144,7 +145,6 @@ class Events(ViewSet):
                 registration.event = event
                 registration.gamer = gamer
                 registration.save()
-                registration = registration.__dict__
 
                 return Response({}, status=status.HTTP_201_CREATED)
 
