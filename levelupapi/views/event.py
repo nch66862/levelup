@@ -144,6 +144,7 @@ class Events(ViewSet):
                 registration.event = event
                 registration.gamer = gamer
                 registration.save()
+                registration = registration.__dict__
 
                 return Response({}, status=status.HTTP_201_CREATED)
 
