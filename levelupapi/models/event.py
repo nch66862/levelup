@@ -6,7 +6,7 @@ class Event(models.Model):
     event_time = models.DateTimeField(auto_now=False, auto_now_add=False)
     location = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    host = models.ForeignKey("Gamer", on_delete=models.CASCADE)
+    host = models.ForeignKey("Gamer", on_delete=models.CASCADE, related_name='the_host')
     attendees = models.ManyToManyField("Gamer", through="EventAttendee", related_name="attending")
 
     @property
