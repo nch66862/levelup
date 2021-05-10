@@ -97,17 +97,11 @@ class Events(ViewSet):
         """
         # Get the current authenticated user
         gamer = Gamer.objects.get(user=request.auth.user)
-        events = Event.objects.annotate(number_of_attendees=Count('attendees'))
+        events = Event.objects.annotate(number_of_attendees=Count('attendees'), joined=Count('attendees',filter=Q(attendees__gamer=gamer)))
 
         # Set the `joined` property on every event
         for event in events:
-            event.joined = None
-
-            try:
-                EventAttendee.objects.get(event=event, gamer=gamer)
-                event.joined = True
-            except EventAttendee.DoesNotExist:
-                event.joined = False
+            event.joined = bool(event.joined)
 
         # Support filtering events by game
         game = self.request.query_params.get('gameId', None)
