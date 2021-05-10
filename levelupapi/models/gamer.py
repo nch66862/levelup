@@ -6,4 +6,3 @@ class Gamer(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=50)
-    attending_events = models.ManyToManyField("Event", through="EventAttendee")

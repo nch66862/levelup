@@ -8,7 +8,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from levelupapi.models import Game, Event, Gamer, EventAttendee
 from levelupapi.views.game import GameSerializer
-from django.db.models import Count
+from django.db.models import Count, Q
 
 
 class Events(ViewSet):
@@ -97,11 +97,11 @@ class Events(ViewSet):
         """
         # Get the current authenticated user
         gamer = Gamer.objects.get(user=request.auth.user)
-        events = Event.objects.annotate(number_of_attendees=Count('attendees'), joined=Count('attendees',filter=Q(attendees__gamer=gamer)))
+        events = Event.objects.annotate(number_of_attendees=Count('attendees'))
 
         # Set the `joined` property on every event
         for event in events:
-            event.joined = bool(event.joined)
+            event.joined = gamer in event.attendees.all()
 
         # Support filtering events by game
         game = self.request.query_params.get('gameId', None)
