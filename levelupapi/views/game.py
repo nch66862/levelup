@@ -131,7 +131,7 @@ class Games(ViewSet):
         """
         # Get all game records from the database
         gamer = Gamer.objects.get(user=request.auth.user)
-        games = Game.objects.annotate(event_count=Count('events'), user_event_count=Count('events', filter=Q(Game__gamer=gamer)))
+        games = Game.objects.annotate(event_count=Count('events'), user_event_count=Count('events', filter=Q(events__host=gamer)))
 
         # Support filtering games by type
         #    http://localhost:8000/games?type=1
