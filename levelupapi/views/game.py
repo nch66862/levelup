@@ -83,10 +83,15 @@ class Games(ViewSet):
         """
         gamer = Gamer.objects.get(user=request.auth.user)
 
+
         # Do mostly the same thing as POST, but instead of
         # creating a new instance of Game, get the game record
         # from the database whose primary key is `pk`
         game = Game.objects.get(pk=pk)
+
+        if gamer is not game.gamer:
+            return Response({}, status=status.HTTP_403_FORBIDDEN)
+
         game.title = request.data["title"]
         game.maker = request.data["maker"]
         game.number_of_players = request.data["numberOfPlayers"]
