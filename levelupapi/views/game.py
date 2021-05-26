@@ -45,7 +45,7 @@ class Games(ViewSet):
         try:
             game.save()
             serializer = GameSerializer(game, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         # If anything went wrong, catch the exception and
         # send a response with a 400 status code to tell the
@@ -89,7 +89,7 @@ class Games(ViewSet):
         # from the database whose primary key is `pk`
         game = Game.objects.get(pk=pk)
 
-        if gamer is not game.gamer:
+        if gamer.id is not game.gamer.id:
             return Response({}, status=status.HTTP_403_FORBIDDEN)
 
         game.title = request.data["title"]
