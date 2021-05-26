@@ -13,7 +13,10 @@
         <ol>
             {% for event in user.events %}
             <li>
-                Title: {{ event.name }}
+                Title: {{ event.name }}<br>
+                Game: {{ event.game_name }}<br>
+                Time: {{ event.event_time }}<br>
+                Location: {{ event.location }}<br>
             </li>
             {% endfor %}
         </ol>

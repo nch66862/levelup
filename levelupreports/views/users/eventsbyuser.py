@@ -16,12 +16,13 @@ def userevent_list(request):
             # Query for all games, with related user info.
             db_cursor.execute("""
                 SELECT
-                    e.id,
+                    e.id as event_id,
                     e.event_time,
                     e.location,
                     e.name as event_name,
-                    g.name as game_name,
+                    g.title as game_name,
                     gr.id gamer_id,
+                    u.id as user_id,
                     u.first_name || ' ' || u.last_name AS full_name
                 FROM
                     levelupapi_event e
@@ -60,11 +61,11 @@ def userevent_list(request):
             for row in dataset:
                 # Create a Game instance and set its properties
                 event = Event()
+                event.id = row["event_id"]
                 event.name = row["event_name"]
-                event.maker = row["maker"]
-                event.skill_level = row["skill_level"]
-                event.number_of_players = row["number_of_players"]
-                event.gametype_id = row["gametype_id"]
+                event.event_time = row["event_time"]
+                event.location = row["location"]
+                event.game_name = row['game_name']
 
                 # Store the user's id
                 uid = row["user_id"]
@@ -73,14 +74,14 @@ def userevent_list(request):
                 if uid in events_by_user:
 
                     # Add the current game to the `games` list for it
-                    events_by_user[uid]['games'].append(event)
+                    events_by_user[uid]['events'].append(event)
 
                 else:
                     # Otherwise, create the key and dictionary value
                     events_by_user[uid] = {}
                     events_by_user[uid]["id"] = uid
                     events_by_user[uid]["full_name"] = row["full_name"]
-                    events_by_user[uid]["games"] = [event]
+                    events_by_user[uid]["events"] = [event]
 
         # Get only the values from the dictionary and create a list from them
         list_of_events_user_is_attending = events_by_user.values()
