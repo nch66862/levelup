@@ -39,16 +39,14 @@ def userevent_list(request):
             #
             # {
             #     1: {
-            #         "id": 1,
-            #         "full_name": "Admina Straytor",
-            #         "games": [
+            #         "gamer_id": 1,
+            #         "full_name": "Molly Ringwald",
+            #         "events": [
             #             {
-            #                 "id": 1,
-            #                 "title": "Foo",
-            #                 "maker": "Bar Games",
-            #                 "skill_level": 3,
-            #                 "number_of_players": 4,
-            #                 "gametype_id": 2
+            #                 "id": 5,
+            #                 "date": "2020-12-23",
+            #                 "time": "19:00",
+            #                 "game_name": "Fortress America"
             #             }
             #         ]
             #     }
