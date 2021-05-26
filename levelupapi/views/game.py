@@ -89,7 +89,7 @@ class Games(ViewSet):
         # from the database whose primary key is `pk`
         game = Game.objects.get(pk=pk)
 
-        if gamer is not game.gamer:
+        if gamer.id is not game.gamer.id:
             return Response({}, status=status.HTTP_403_FORBIDDEN)
 
         game.title = request.data["title"]

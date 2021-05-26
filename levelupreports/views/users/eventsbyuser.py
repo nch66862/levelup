@@ -16,20 +16,23 @@ def userevent_list(request):
             # Query for all games, with related user info.
             db_cursor.execute("""
                 SELECT
-                    g.id,
-                    g.title,
-                    g.maker,
-                    g.gametype_id,
-                    g.number_of_players,
-                    g.skill_level,
-                    u.id user_id,
+                    e.id,
+                    e.event_time,
+                    e.location,
+                    e.name as event_name,
+                    g.name as game_name,
+                    gr.id gamer_id,
                     u.first_name || ' ' || u.last_name AS full_name
                 FROM
-                    levelupapi_game g
+                    levelupapi_event e
                 JOIN
-                    levelupapi_gamer gr ON g.gamer_id = gr.id
+                    levelupapi_eventattendee ea ON ea.event_id = e.id
+                JOIN
+                    levelupapi_gamer gr ON ea.gamer_id = gr.id
                 JOIN
                     auth_user u ON gr.user_id = u.id
+                JOIN
+                    levelupapi_game g ON g.id = e.game_id
             """)
 
             dataset = db_cursor.fetchall()
@@ -57,7 +60,7 @@ def userevent_list(request):
             for row in dataset:
                 # Create a Game instance and set its properties
                 event = Event()
-                event.title = row["title"]
+                event.name = row["event_name"]
                 event.maker = row["maker"]
                 event.skill_level = row["skill_level"]
                 event.number_of_players = row["number_of_players"]
