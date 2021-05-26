@@ -8,7 +8,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from levelupapi.models import Game, Event, Gamer, EventAttendee
 from levelupapi.views.game import GameSerializer
-from django.db.models import Count, Q
+from django.db.models import Count
 
 
 class Events(ViewSet):
