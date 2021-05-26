@@ -6,6 +6,7 @@ from rest_framework import status, serializers
 from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from rest_framework.permissions import DjangoModelPermissions
 from levelupapi.models import Game, Event, Gamer, EventAttendee
 from levelupapi.views.game import GameSerializer
 from django.db.models import Count
@@ -13,6 +14,8 @@ from django.db.models import Count
 
 class Events(ViewSet):
     """Level up events"""
+    permission_classes = [ DjangoModelPermissions ]
+    queryset = Game.objects.none()
 
     def create(self, request):
         """Handle POST operations for events
